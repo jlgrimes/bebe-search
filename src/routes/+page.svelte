@@ -5,6 +5,7 @@
   import { ButtonGroup, Input, ListPlaceholder, Button } from 'flowbite-svelte';
 
   let clicked = false;
+  let selectedCardUrl: string;
 </script>
 
 
@@ -30,10 +31,14 @@
   {/if}
   {#if form?.cards}
     {#each form?.cards.reverse() ?? [] as card}
-      <img class="card" src={card.images.small} />  
+      <img class="card" src={card.images.small} on:click={() => selectedCardUrl = card.images.large} />  
     {/each}
   {/if}
 </div>
+
+{#if selectedCardUrl}
+  <img class='selected-card' src={selectedCardUrl} on:click={() => selectedCardUrl = null} />
+{/if}
 
 <style>
   .card-list {
@@ -43,6 +48,14 @@
   }
   .card {
     width: 49vw;
+  }
+
+  .selected-card {
+    position: fixed;
+    top: 6vh;
+    left: 0;
+    z-index: 6;
+    width: 100vw;
   }
 
   .card-search-input {
