@@ -8,7 +8,6 @@
   let selectedCardUrl: string;
 </script>
 
-
 <div class={clicked ? 'card-search-input card-search-input__clicked' : 'card-search-input card-search-input__not-clicked'}>
   <form method="POST" use:enhance>
     <div>
@@ -31,6 +30,7 @@
   {/if}
   {#if form?.cards}
     {#each form?.cards.reverse() ?? [] as card}
+      <link rel="preload" as="image" href={card.images.large} />
       <img class="card" src={card.images.small} on:click={() => selectedCardUrl = card.images.large} />  
     {/each}
   {/if}
