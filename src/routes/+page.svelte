@@ -12,7 +12,7 @@
   <form method="POST" use:enhance>
     <div>
       <ButtonGroup class="w-96 ml-1 shadow-lg" size="lg">
-        <Input name="card" placeholder="Search for a Pokemon" />
+        <Input name="card" type="search" placeholder="Search for a Pokemon" />
         <Button gradient color="purpleToBlue" type="submit" on:click={() => {
           clicked = true;
           form = null;
@@ -46,6 +46,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 1vw;
+    padding-top: 11vh;
   }
   .card {
     width: 49vw;
@@ -78,8 +79,8 @@
   }
 
   .card-search-input__clicked {
-    margin-top: 80vh;
-    animation-duration: 0.7s;
+    margin-top: 1vh;
+    animation-duration: 0.6s;
     animation-name: slidein;
   }
 
@@ -89,7 +90,7 @@
     }
 
     to {
-     margin-top: 80vh;
+     margin-top: 1vh;
     }
   }
 </style>
