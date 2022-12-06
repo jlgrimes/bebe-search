@@ -38,6 +38,7 @@
 
 {#if selectedCardUrl}
   <img class='selected-card' src={selectedCardUrl} on:click={() => selectedCardUrl = null} />
+  <div class="selected-card-overlay" on:click={() => selectedCardUrl = null}></div>
 {/if}
 
 <style>
@@ -56,6 +57,15 @@
     left: 0;
     z-index: 6;
     width: 100vw;
+  }
+
+  .selected-card-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 5;
   }
 
   .card-search-input {
