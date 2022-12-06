@@ -38,6 +38,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"animate.css": "^4.1.1",
 		"pokemon-tcg-sdk-typescript": "^1.3.4"
 	}
 }
