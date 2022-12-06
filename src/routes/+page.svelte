@@ -2,51 +2,69 @@
   /** @type {import('./$types').PageData} */
   export let form;
   import { enhance } from '$app/forms';
-  import { ButtonGroup, Input, InputAddon, Button } from 'flowbite-svelte';
+  import { ButtonGroup, Input, ListPlaceholder, Button } from 'flowbite-svelte';
 
   let clicked = false;
 </script>
 
-<div class={clicked ? 'card-search-input__clicked' : 'card-search-input__not-clicked'}>
+
+<div class={clicked ? 'card-search-input card-search-input__clicked' : 'card-search-input card-search-input__not-clicked'}>
   <form method="POST" use:enhance>
-    <ButtonGroup class="w-full">
-      <Input name="card" />
-      <Button color="blue" type="submit" on:click={() => clicked = true}>Search</Button>
+    <ButtonGroup class="w-96 pl-2">
+      <Input name="card" placeholder="Search for a Pokemon" />
+      <Button shadow="purple" gradient color="purple" type="submit" on:click={() => {
+        clicked = true;
+        form = null;
+      }}>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>  
+      </Button>
     </ButtonGroup>
   </form>
 </div>
 
 <div class="card-list">
-  {#each form?.cards.reverse() ?? [] as card}
-    <img class="card" src={card.images.small} />  
-  {/each}
+  {#if !form?.cards && clicked}
+    <ListPlaceholder />
+  {/if}
+  {#if form?.cards}
+    {#each form?.cards.reverse() ?? [] as card}
+      <img class="card" src={card.images.small} />  
+    {/each}
+  {/if}
 </div>
 
 <style>
   .card-list {
     display: flex;
     flex-wrap: wrap;
+    padding: 1vw;
   }
   .card {
-    width: 47vw;
+    width: 49vw;
+  }
+
+  .card-search-input {
+    position: fixed;
+    z-index: 5;
   }
 
   .card-search-input__not-clicked {
-    margin-top: 50%;
+    margin-top: 40vh;
   }
 
   .card-search-input__clicked {
-    animation-duration: 0.75s;
+    margin-top: 90vh;
+    animation-duration: 0.7s;
     animation-name: slidein;
   }
 
   @keyframes slidein {
     from {
-      margin-top: 50%;
+      margin-top: 40vh;
     }
 
     to {
-     margin-top: 0;
+     margin-top: 90vh;
     }
   }
 </style>
