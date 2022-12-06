@@ -10,15 +10,17 @@
 
 <div class={clicked ? 'card-search-input card-search-input__clicked' : 'card-search-input card-search-input__not-clicked'}>
   <form method="POST" use:enhance>
-    <ButtonGroup class="w-96 pl-2">
-      <Input name="card" placeholder="Search for a Pokemon" />
-      <Button shadow="purple" gradient color="purple" type="submit" on:click={() => {
-        clicked = true;
-        form = null;
-      }}>
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>  
-      </Button>
-    </ButtonGroup>
+    <div>
+      <ButtonGroup class="w-96 ml-1 shadow-lg" size="lg">
+        <Input name="card" placeholder="Search for a Pokemon" />
+        <Button gradient color="purpleToBlue" type="submit" on:click={() => {
+          clicked = true;
+          form = null;
+        }}>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>  
+        </Button>
+      </ButtonGroup>
+    </div>
   </form>
 </div>
 
@@ -53,7 +55,7 @@
   }
 
   .card-search-input__clicked {
-    margin-top: 90vh;
+    margin-top: 80vh;
     animation-duration: 0.7s;
     animation-name: slidein;
   }
@@ -64,7 +66,7 @@
     }
 
     to {
-     margin-top: 90vh;
+     margin-top: 80vh;
     }
   }
 </style>
