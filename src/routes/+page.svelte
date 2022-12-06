@@ -2,14 +2,17 @@
   /** @type {import('./$types').PageData} */
   export let form;
   import { enhance } from '$app/forms';
+  import { ButtonGroup, Input, InputAddon, Button } from 'flowbite-svelte';
 
   let clicked = false;
 </script>
 
 <div class={clicked ? 'card-search-input__clicked' : 'card-search-input__not-clicked'}>
   <form method="POST" use:enhance>
-    <input name="card" />
-    <button on:click={() => clicked = true}>search</button>
+    <ButtonGroup class="w-full">
+      <Input name="card" />
+      <Button color="blue" type="submit" on:click={() => clicked = true}>Search</Button>
+    </ButtonGroup>
   </form>
 </div>
 
