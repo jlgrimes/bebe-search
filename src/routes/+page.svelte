@@ -3,7 +3,6 @@
   export let form;
   import { enhance } from '$app/forms';
   import { ButtonGroup, Input, ListPlaceholder, Button } from 'flowbite-svelte';
-  import 'animate.css';
 
   let clicked = false;
   let selectedCardUrl: string;
@@ -38,7 +37,7 @@
 </div>
 
 {#if selectedCardUrl}
-  <img class='selected-card animate__animated animate__bounceIn' src={selectedCardUrl} on:click={() => selectedCardUrl = null} />
+  <img class='selected-card' src={selectedCardUrl} on:click={() => selectedCardUrl = null} />
   <div class="selected-card-overlay" on:click={() => selectedCardUrl = null}></div>
 {/if}
 
