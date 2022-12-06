@@ -17,7 +17,7 @@
 </div>
 
 <div class="card-list">
-  {#each form?.cards ?? [] as card}
+  {#each form?.cards.reverse() ?? [] as card}
     <img class="card" src={card.images.small} />  
   {/each}
 </div>
