@@ -81,7 +81,7 @@
   .card-search-input__clicked {
     margin-top: 1vh;
     animation-duration: 0.6s;
-    animation-name: slidein;
+    /* animation-name: slidein; */
   }
 
   @keyframes slidein {
